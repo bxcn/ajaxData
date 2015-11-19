@@ -1,9 +1,24 @@
 {
   "name": "ajaxData",
-  "private": true,
+  "homepage": "https://github.com/bxcn/JaskData",
+  "authors": [
+    "bxcn"
+  ],
+  "description": "ajax",
+  "main": "dist/ajaxData.js",
+  "moduleType": [],
+  "license": "MIT",
   "version": "0.1.0",
-  "dependencies": {
-  },
-  "devDependencies": {
-  }
+  "private": true,
+  "keywords": [
+    "jask"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./node_modules/bower_components",
+    "test",
+    "tests"
+  ]
 }

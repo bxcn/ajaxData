@@ -2,6 +2,11 @@ ajaxData
 =======================
 一个简单的ajax请求组件，ajaxData依赖jquery组件；在引用ajaxData前请先引用jquery组件，jquery支持1.2以上版本
 
+```
+    <script src="lib/jquery.min.js"></script>
+    <script src="ajaxData.js"></script>
+```
+    
 #opations对象参数:
  * url：发送请求的地址 (必填)；
  * data：发送到服务器的数据 (缺省)；

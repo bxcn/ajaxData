@@ -8,7 +8,7 @@
   "main": "dist/ajaxData.js",
   "moduleType": [],
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "v0.1.0",
   "private": true,
   "keywords": [
     "jask"

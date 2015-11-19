@@ -15,7 +15,7 @@ ajaxData
  * type：发送请求类型，默认post (缺省)；
  * typeData：请求成功后返回的数据格式，默认json (缺省)；
  * async：是否异步发送请求， 默认true (缺省)；
- * cache：设置为 false 将不缓存此页面 (缺省)；
+ * cache：设置为false将不缓存此页面，默认false (缺省)；
 
 #使用实例：
 

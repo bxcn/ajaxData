@@ -13,7 +13,7 @@ var ajaxData = {
      "jsonp": JSONP 格式。使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
      "text": 返回纯文本字符串
      */
-    var _cache = param.cache;
+    var _cache = param.cache || false;
     var _type = param.type || "POST";
     var _dataType = param.dataType || "json";
     var _async = param.async || true;

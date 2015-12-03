@@ -17,7 +17,7 @@
       var _cache = param.cache || false;
       var _type = param.type || "POST";
       var _dataType = param.dataType || "json";
-      var _async = param.async || true;
+      var _async = param.async;
       var _data = param.data || null;
       var _url = param.url || null;
       var _success = param.success || function() {

@@ -1,11 +1,78 @@
 ajaxData
 =======================
-一个简单的ajax请求组件，ajaxData依赖jquery组件；在引用ajaxData前请先引用jquery组件，jquery支持1.2以上版本
 
 ```
     <script src="lib/jquery.min.js"></script>
     <script src="ajaxData.js"></script>
 ```
+
+一个简单的ajax请求组件，ajaxData依赖jquery组件；在引用ajaxData前请先引用jquery组件，jquery支持1.2以上版本
+ajaxData可以减少一些不必要每次都写的参数;
+ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax；
+可以扩展在ajax语法之前增加一个显示蒙板效果，在加载完成之后来，隐藏这个蒙板
+
+#扩展代码：
+```
+  // 加载前的一个遮罩层对象
+  function AjaxDataLoading(id) {
+    var bg = $(id);
+    // 加载Ajax前去显示
+    function beforeSend() {
+      bg.show();
+    }
+
+    function complete() {
+      bg.hide();
+    }
+    this.ajax = function(param) {
+      param.beforeSend = beforeSend;
+      param.complete = complete;
+      return ajaxData.ajax(param);
+    }
+    this.post = function(param) {
+      param.beforeSend = beforeSend;
+      param.complete = complete;
+      return ajaxData.post(param);
+    }
+    this.get = function(param) {
+      param.beforeSend = beforeSend;
+      param.complete = complete;
+      return ajaxData.get(param);
+    }
+
+    this.show = function() {
+      bg.show();
+    }
+
+    this.hide = function() {
+      bg.hide();
+    }
+
+    return this;
+  }
+
+```
+
+#扩展代码调用：
+```  
+  var ajaxDataLoading = new AjaxDataLoading("#loading");
+
+  ajaxDataLoading.get({
+    url:"json/add.json",
+    data:"name=ajaxData&anthor=bxcn",
+    success: function( json ){
+      console.log("successfull");
+    }
+  });
+
+  根据不现的蒙板显示效果，我们可以扩展多个样式；
+  只需要创建多个AjaxDataLoading实例
+  
+  var ajaxDataLoading1 = new AjaxDataLoading("#loading1");
+  var ajaxDataLoading2 = new AjaxDataLoading("#loading1");
+```
+
+
     
 #opations对象参数:
  * url：发送请求的地址 (必填)；

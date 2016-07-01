@@ -1,9 +1,10 @@
-(function(){
-  var console = console || {log:function(){}};
-
+(function(console) {
+  var console = console || {
+    log: function(){}
+  }
   var ajaxData = {
 
-    ajax: function( param ) {
+    ajax: function(param) {
 
       /**
        * typeData 类型:
@@ -17,45 +18,60 @@
       var _cache = param.cache || false;
       var _type = param.type || "POST";
       var _dataType = param.dataType || "json";
-      var _async = param.async;
+      var _async = param.async || true;
       var _data = param.data || null;
       var _url = param.url || null;
+
+      var _beforeSend = param.beforeSend || function() {
+        // console.log("beforeSend");
+      }
+      var _complete = param.complete || function() {
+        // console.log("complete");
+      }
+      var _dataFilter = param.dataFilter || function( a, b ) {
+        // console.log(arguments.length);
+        // console.log(b);
+        // console.log("在请求成功之后调用！dataFilter");
+      }
       var _success = param.success || function() {
-          console.log("操作成功！");
-        }
-      var _error = param.success || function() {
-          console.log("操作失败！");
-        }
-      var _statusCode =  {
-        404: function () {
+        console.log("success");
+      }
+      var _error = param.error || function() {
+        console.log("error");
+      }
+      var _statusCode = {
+        404: function() {
           console.log('页面未找到！');
         }
       };
 
-      if ( !_url ) {
-        console.log("请求参数不完整！ url is null");
+      if (!_url) {
+        console.log("请求参数不完整！ url is : " + _url);
         return;
       }
 
       $.ajax({
         type: _type,
-        dataType:_dataType,
+        dataType: _dataType,
         url: _url,
         async: _async,
         data: _data,
-        cache:_cache,
-        statusCode:_statusCode,
+        cache: _cache,
+        statusCode: _statusCode, 
+        beforeSend: _beforeSend,
+        complete: _complete, 
+        // dataFilter:_dataFilter,
         success: _success,
         error: _error
       });
       return $;
     },
-    post: function( param ) {
+    post: function(param) {
       param["type"] = param.type || "POST";
       this.ajax(param);
     },
 
-    get: function( param ) {
+    get: function(param) {
       param["type"] = param.type || "GET";
       this.ajax(param);
     }
@@ -63,4 +79,4 @@
 
   window["ajaxData"] = ajaxData;
 
-})();
+})(console);

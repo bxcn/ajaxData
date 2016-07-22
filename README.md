@@ -63,7 +63,7 @@ ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.
 #扩展代码：
 ```
   // 加载前的一个遮罩层对象
-function DialogLoading(id) {
+function AjaxDataLoading(id) {
   var bg = $(id);
   // 加载Ajax前去显示
   function beforeSend(fn) {

@@ -63,42 +63,52 @@ ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.
 #扩展代码：
 ```
   // 加载前的一个遮罩层对象
-  function AjaxDataLoading(id) {
-    var bg = $(id);
-    // 加载Ajax前去显示
-    function beforeSend() {
+function DialogLoading(id) {
+  var bg = $(id);
+  // 加载Ajax前去显示
+  function beforeSend(fn) {
+    return function() {
       bg.show();
+      if (fn) {
+        fn();
+      }
     }
-
-    function complete() {
-      bg.hide();
-    }
-    this.ajax = function(param) {
-      param.beforeSend = beforeSend;
-      param.complete = complete;
-      return ajaxData.ajax(param);
-    }
-    this.post = function(param) {
-      param.beforeSend = beforeSend;
-      param.complete = complete;
-      return ajaxData.post(param);
-    }
-    this.get = function(param) {
-      param.beforeSend = beforeSend;
-      param.complete = complete;
-      return ajaxData.get(param);
-    }
-
-    this.show = function() {
-      bg.show();
-    }
-
-    this.hide = function() {
-      bg.hide();
-    }
-
-    return this;
   }
+
+  function complete(fn) {
+    return function() {
+      bg.hide();
+      if (fn) {
+        fn();
+      }
+    }
+  }
+  this.ajax = function(param) {
+    param.beforeSend = beforeSend(param.beforeSend);
+    param.complete = complete(param.complete);
+    return ajaxData.ajax(param);
+  }
+  this.post = function(param) {
+    param.beforeSend = beforeSend(param.beforeSend);
+    param.complete = complete(param.complete);
+    return ajaxData.post(param);
+  }
+  this.get = function(param) {
+    param.beforeSend = beforeSend(param.beforeSend);
+    param.complete = complete(param.complete);
+    return ajaxData.get(param);
+  }
+
+  this.show = function() {
+    bg.show();
+  }
+
+  this.hide = function() {
+    bg.hide();
+  }
+
+  return this;
+}
 
 ```
 

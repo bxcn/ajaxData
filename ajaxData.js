@@ -48,30 +48,31 @@
         return;
       }
 
-      $.ajax({
+      // 设置全局 AJAX 默认选项。
+      $.ajaxSetup({
         type: _type,
         dataType: _dataType,
         url: _url,
         async: _async,
         data: _data,
         cache: _cache,
-        statusCode: _statusCode, 
+        statusCode: _statusCode,
         beforeSend: _beforeSend,
-        complete: _complete, 
-        // dataFilter:_dataFilter,
+        complete: _complete,
         success: _success,
         error: _error
       });
-      return $;
+
+      return $.ajax(param);
     },
     post: function(param) {
       param["type"] = param.type || "POST";
-      this.ajax(param);
+      return this.ajax(param);
     },
 
     get: function(param) {
       param["type"] = param.type || "GET";
-      this.ajax(param);
+      return this.ajax(param);
     }
   };
 

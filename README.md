@@ -131,6 +131,23 @@ function AjaxDataLoading(id) {
   var ajaxDataLoading2 = new AjaxDataLoading("#loading1");
 ```
 
+#ajaxData的CMD模式：
+```  
+  var ajaxData = require("ajaxData").init("#loading");
+
+  ajaxData.get({
+    url:"json/add.json",
+    data:"name=ajaxData&anthor=bxcn",
+    success: function( json ){
+      console.log("successfull");
+    }
+  }).done(function(json){
+    console.log("successfull");
+  });
+
+  把ajaxData和AjaxDataLoading合成一个文件了，通过给ajaxData传一个参数，参数是一个元素的ID,在ajax请求完成前显示加载图片，完成后自动隐藏
+```
+
 
 
 

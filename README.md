@@ -1,4 +1,4 @@
-ajaxData
+ajaxData异步请求
 =======================
 
 ```
@@ -6,8 +6,7 @@ ajaxData
     <script src="ajaxData.js"></script>
 ```
 
-一个简单的ajax请求组件，ajaxData依赖jquery组件；在引用ajaxData前请先引用jquery组件，jquery支持1.2以上版本
-ajaxData可以减少一些不必要每次都写的参数;
+它的价值所在：一个简单的ajax请求插件，ajaxData基于jquery插件；在引用ajaxData前请先引用jquery组件，ajaxData可以减少一些不必要每次都写的参数和增加一些在请求前和请求完成后的Loading效果;
     
 #opations对象参数:
  * url：发送请求的地址 (必填)；
@@ -55,6 +54,23 @@ ajaxData可以减少一些不必要每次都写的参数;
       success: function( json ){
         console.log("successfull");
       }
+    });
+```
+
+请求成功执行done, 失败执行fail, 无论成功还是失败都会执行always的链式调用：
+```
+    ajaxData.post({
+      url:"json/add.json",
+      data:{name:"bxcn"}
+    })
+    .done(function(result){
+      console.log("successfull");
+    })
+    .fail(function(result){
+     console.log("fail");
+    })
+    .always(function(result){
+     console.log("always");
     });
 ```
 
@@ -137,15 +153,12 @@ function AjaxDataLoading(id) {
 
   ajaxData.get({
     url:"json/add.json",
-    data:"name=ajaxData&anthor=bxcn",
-    success: function( json ){
-      console.log("successfull");
-    }
+    data:"name=ajaxData&anthor=bxcn"
   }).done(function(json){
     console.log("successfull");
   });
 
-  把ajaxData和AjaxDataLoading合成一个文件了，通过给ajaxData传一个参数，参数是一个元素的ID,在ajax请求完成前显示加载图片，完成后自动隐藏
+  把ajaxData和AjaxDataLoadingr的功能合成一个文件了，通过给ajaxData的init方法传一个参数，参数是一个元素的ID,在ajax请求完成前显示加载图片，完成后自动隐藏
 ```
 
 

@@ -7,42 +7,40 @@
   <body>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script> 
-  <!-- <script src="ajaxData.min.js"></script>  -->
   <script>
-  // web访问方式
-/*  var ajaxData = ajaxData();
-   ajaxData.get({
-    url: "json/add.json",
-    data: "name=ajaxData&anthor=bxcn"
-  }).done(function(json) {
-    alert("Get successfull");
-  });
-  //ajax
-  ajaxData.ajax({
-    type: "get",
-    url: "json/add.json",
-    data: {
-      name: "bxcn"
-    }
-  }).done(function(json) {
-    alert(" ajax -> get successfull");
-  });
-  // Post
-  ajaxData.post({
-    type: "get",
-    url: "json/error.json",
-    data: {
-      name: "bxcn"
-    }
-  }).fail(function(json) {
-    alert("Post fail");
-  });*/
-
-
   seajs.config({
       base: "",
   });
-  seajs.use('app');
+  seajs.use('http://bxcn.github.io/ajaxData/ajaxData', function(ajaxData){
+    ajaxData = ajaxData();
+    // Get
+    ajaxData.get({
+      url: "json/add.json",
+      data: "name=ajaxData&anthor=bxcn"
+    }).done(function(json) {
+      alert("Get successfull");
+    });
+    //ajax
+    ajaxData.ajax({
+      type: "get",
+      url: "json/add.json",
+      data: {
+        name: "bxcn"
+      }
+    }).done(function(json) {
+      alert(" ajax -> get successfull");
+    });
+    // Post
+    ajaxData.post({
+      type: "get",
+      url: "json/error.json",
+      data: {
+        name: "bxcn"
+      }
+    }).fail(function(json) {
+      alert("Post fail");
+    });
+  });
   </script>
 
   </script>

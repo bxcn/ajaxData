@@ -1,0 +1,33 @@
+{
+  "name": "formUI project",
+  "version": "1.0.0",
+  "description": "formUI Compoent project",
+  "private": true,
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "directories": "",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/bxcn/formUI.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-preset-es2015": "^6.18.0",
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-umd": "^0.2.0"
+  },
+  "scripts": {
+    "build": "gulp serve"
+  },
+  "dependencies": {}
+}

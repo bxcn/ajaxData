@@ -1,5 +1,3 @@
-define(function(require, exports, module) {
-
   function AjaxData(id) {
     var bg = $(id || "#loading");
     // 加载Ajax前去显示
@@ -98,8 +96,6 @@ define(function(require, exports, module) {
     return this;
   }
 
-  module.exports.init = function(id) {
+  var ajaxData = function( id ) {
     return new AjaxData(id);
   }
-
-});

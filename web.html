@@ -7,10 +7,10 @@
   <body>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script> 
-  <!-- <script src="ajaxData.min.js"></script>  -->
+  <script src="ajaxData.min.js"></script>
   <script>
   // web访问方式
-/*  var ajaxData = ajaxData();
+  var ajaxData = ajaxData();
    ajaxData.get({
     url: "json/add.json",
     data: "name=ajaxData&anthor=bxcn"
@@ -36,15 +36,8 @@
     }
   }).fail(function(json) {
     alert("Post fail");
-  });*/
-
-
-  seajs.config({
-      base: "",
   });
-  seajs.use('app');
   </script>
-
   </script>
   </body>
 </html>

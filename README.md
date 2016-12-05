@@ -79,6 +79,9 @@ ajaxData异步请求
 ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.可以扩展ajax请求之前增加一个显示蒙板效果，在加载完成之后来隐藏这个蒙板.
 
 #ajaxData的CMD模式：
+
+通过给ajaxData的构造函数传一个参数，参数是一个元素的ID,在ajax请求完成前显示加载图片，完成后自动隐藏
+
 ``` javascript
   var ajaxData = require("ajaxData");
   // 蒙板的id
@@ -89,8 +92,6 @@ ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.
   }).done(function(json){
     console.log("successfull");
   });
-
-  把ajaxData和AjaxDataLoadingr的功能合成一个文件了，通过给ajaxData的init方法传一个参数，参数是一个元素的ID,在ajax请求完成前显示加载图片，完成后自动隐藏
 ```
 
 

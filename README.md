@@ -27,7 +27,11 @@ ajaxData异步请求
  * cache：设置为false将不缓存此页面，默认false (缺省)；
 
 
-  
+全局配置：
+``` javascript
+  ajaxData = ajaxData();
+```
+
 调用get方式：
 ``` javascript
     ajaxData.get({

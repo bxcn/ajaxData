@@ -1,7 +1,7 @@
 ajaxData异步请求
 =======================
 
-```
+``` html
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="ajaxData.js"></script>
 ```
@@ -10,7 +10,7 @@ ajaxData异步请求
 
 #使用实例：
 
-```
+``` javascript
   ajaxData.get(options);
 ```
 
@@ -29,7 +29,7 @@ ajaxData异步请求
 
   
 调用get方式：
-```
+``` javascript
     ajaxData.get({
       url:"json/add.json",
       data:"name=ajaxData&anthor=bxcn",
@@ -39,7 +39,7 @@ ajaxData异步请求
     });
 ```
 调用ajax方式：
-```
+``` javascript
     ajaxData.ajax({
       url:"json/add.json",
       data:{name:"bxcn"},
@@ -49,7 +49,7 @@ ajaxData异步请求
     });
 ```
 调用post方式：
-```
+``` javascript
     ajaxData.post({
       url:"json/add.json",
       data:{name:"bxcn"},
@@ -60,7 +60,7 @@ ajaxData异步请求
 ```
 
 请求成功执行done, 失败执行fail, 无论成功还是失败都会执行always的链式调用：
-```
+``` javascript
     ajaxData.post({
       url:"json/add.json",
       data:{name:"bxcn"}
@@ -79,7 +79,7 @@ ajaxData异步请求
 ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.可以扩展ajax请求之前增加一个显示蒙板效果，在加载完成之后来隐藏这个蒙板.
 
 #ajaxData的CMD模式：
-```  
+``` javascript
   var ajaxData = require("ajaxData");
   // 蒙板的id
   ajaxData = ajaxData("#loading");

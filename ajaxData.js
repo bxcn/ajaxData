@@ -53,7 +53,7 @@ function AjaxData(id) {
     var _url = param.url || null;
 
     var _beforeSend = function _beforeSend() {
-      console.log("beforeSend");
+      //console.log("beforeSend");
     };
     var _complete = function _complete() {
       //console.log("complete");

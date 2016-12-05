@@ -41,7 +41,7 @@
       var _url = param.url || null;
 
       var _beforeSend = function() {
-        console.log("beforeSend");
+        //console.log("beforeSend");
       };
       var _complete = function() {
         //console.log("complete");

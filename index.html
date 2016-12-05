@@ -6,12 +6,9 @@
   </head>
   <body>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-  <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script> 
+  <script src="ajaxData.js"></script>
   <script>
-  seajs.config({
-      base: "",
-  });
-  seajs.use('http://bxcn.github.io/ajaxData/ajaxData', function(ajaxData){
+    // 配置成全局
     ajaxData = ajaxData();
     // Get
     ajaxData.get({
@@ -40,7 +37,6 @@
     }).fail(function(json) {
       alert("Post fail");
     });
-  });
   </script>
 
   </script>

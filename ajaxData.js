@@ -4,7 +4,7 @@
   if (typeof exports === 'object') {
     module.exports = factory();
   } else {
-    factory(global);
+    global.ajaxData = factory(global);
   }
 }(typeof window !== "undefined" ? window : this, function(window) {
 
@@ -111,7 +111,6 @@ var ajaxData = function ajaxData(id) {
   return new AjaxData(id);
 };
 
-  window.ajaxData = ajaxData;
   if (typeof define === 'function' && (define.amd || define.cmd)) { // AMD Module
     define(function(require) {
       return ajaxData;

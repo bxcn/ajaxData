@@ -80,7 +80,7 @@ ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.
 
 #ajaxData的CMD模式：
 
-通过给ajaxData的构造函数传一个参数，参数是一个元素的ID,在ajax请求完成前显示加载图片，完成后自动隐藏
+通过给ajaxData的方法传一个参数，参数是元素的id,在ajax请求完成前显示加载图片，完成后自动隐藏
 
 ``` javascript
   var ajaxData = require("ajaxData");

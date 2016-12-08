@@ -1,14 +1,21 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>ajaxData  支持 Web </title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>ajaxData 支持 CMD </title>
+</head>
+
+<body>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-  <script src="ajaxData.js"></script>
+  <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script>
   <script>
-    // 配置成全局
+  seajs.config({
+    base: "",
+  });
+
+
+  seajs.use("ajaxData", function(ajaxData) {
     ajaxData = ajaxData();
     // Get
     ajaxData.get({
@@ -37,8 +44,8 @@
     }).fail(function(json) {
       alert("Post fail");
     });
+  });
   </script>
+</body>
 
-  </script>
-  </body>
 </html>

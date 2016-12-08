@@ -1,26 +1,28 @@
-  function AjaxData(id) {
-    var bg = $(id || "#loading");
+var ajaxData = function ( id ) {
+
+  function AjaxData( id ) {
+    var bg = $( id || "#loading" );
     // 加载Ajax前去显示
-    function beforeSend(fn) {
-      return function() {
+    function beforeSend( fn ) {
+      return function () {
         bg.show();
-        if (fn) {
+        if ( fn ) {
           fn();
         }
       }
     }
 
-    function complete(fn) {
-      return function() {
+    function complete( fn ) {
+      return function () {
         bg.hide();
-        if (fn) {
+        if ( fn ) {
           fn();
         }
       }
     }
-    this.ajax = function(param) {
+    this.ajax = function ( param ) {
 
-      if (!param.url) {
+      if ( !param.url ) {
         return;
       }
 
@@ -40,26 +42,26 @@
       var _data = param.data || null;
       var _url = param.url || null;
 
-      var _beforeSend = function() {
+      var _beforeSend = function () {
         //console.log("beforeSend");
       };
-      var _complete = function() {
+      var _complete = function () {
         //console.log("complete");
       };
-      var _dataFilter = function(a, b) {
+      var _dataFilter = function ( a, b ) {
         // console.log(arguments.length);
         // console.log(b);
         // console.log("在请求成功之后调用！dataFilter");
       };
-      var _success = function() {};
-      var _error = function() {};
+      var _success = function () {};
+      var _error = function () {};
       var _statusCode = {
-        404: function() {
-          console.log('404: http://' + window.location.host + param.url);
+        404: function () {
+          console.log( '404: http://' + window.location.host + param.url );
         }
       };
       // 设置全局 AJAX 默认选项。
-      $.ajaxSetup({
+      $.ajaxSetup( {
         type: _type,
         dataType: _dataType,
         url: _url,
@@ -71,31 +73,29 @@
         complete: _complete,
         success: _success,
         error: _error
-      });
+      } );
 
-      return $.ajax(param)
-        .always(function() {
+      return $.ajax( param )
+        .always( function () {
           //当递延对象是解决(success)或拒绝(error)时被调用添加处理程序。
           bg.hide();
           //console.log("always");
-        });
+        } );
     };
-    this.post = function(param) {
-      param["type"] = param.type || "POST";
-      param.beforeSend = beforeSend(param.beforeSend);
+    this.post = function ( param ) {
+      param[ "type" ] = param.type || "POST";
+      param.beforeSend = beforeSend( param.beforeSend );
       //param.complete = complete(param.complete);
-      return this.ajax(param);
+      return this.ajax( param );
     };
 
-    this.get = function(param) {
-      param["type"] = param.type || "GET";
-      param.beforeSend = beforeSend(param.beforeSend);
+    this.get = function ( param ) {
+      param[ "type" ] = param.type || "GET";
+      param.beforeSend = beforeSend( param.beforeSend );
       //param.complete = complete(param.complete);
-      return this.ajax(param);
+      return this.ajax( param );
     };
     return this;
   }
-
-  var ajaxData = function( id ) {
-    return new AjaxData(id);
-  }
+  return new AjaxData( id );
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>ajaxData 支持 AMD</title>
+</head>
+
+<body>
+	<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+	<script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script>
+	<script>
+	require.config({
+		baseUrl: ''
+	});
+	require(['ajaxData'], function(ajaxData) {
+
+		ajaxData = ajaxData();
+		// Get
+		ajaxData.get({
+			url: "json/add.json",
+			data: "name=ajaxData&anthor=bxcn"
+		}).done(function(json) {
+			alert("Get successfull");
+		});
+		//ajax
+		ajaxData.ajax({
+			type: "get",
+			url: "json/add.json",
+			data: {
+				name: "bxcn"
+			}
+		}).done(function(json) {
+			alert(" ajax -> get successfull");
+		});
+		// Post
+		ajaxData.post({
+			type: "get",
+			url: "json/error.json",
+			data: {
+				name: "bxcn"
+			}
+		}).fail(function(json) {
+			alert("Post fail");
+		});
+
+	});
+	/*  seajs.config({
+			base: "",
+		});
+
+
+	seajs.use("formUI")*/
+	</script>
+</body>
+</html>

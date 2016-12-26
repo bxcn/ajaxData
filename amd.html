@@ -9,13 +9,12 @@
 <body>
 	<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
 	<script src="http://cdn.bootcss.com/require.js/2.3.2/require.js"></script>
+	<div id="loading" style="width:100px;height:100px;background:red;display:none;"></div>
 	<script>
 	require.config({
 		baseUrl: ''
 	});
 	require(['ajaxData'], function(ajaxData) {
-
-		ajaxData = ajaxData();
 		// Get
 		ajaxData.get({
 			url: "json/add.json",

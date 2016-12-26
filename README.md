@@ -3,7 +3,7 @@ ajaxData异步请求
 
 ``` html
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-  <script src="ajaxData.js"></script>
+  <script src="umd.js"></script>
 ```
 
 它的价值所在：一个简单的ajax请求插件，ajaxData基于jquery插件；在引用ajaxData前请先引用jquery组件，ajaxData可以减少一些不必要每次都写的参数和增加一些在请求前和请求完成后的Loading效果;

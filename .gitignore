@@ -2,5 +2,6 @@ node_modules
 zip
 .tmp
 .sass-cache
+.idea
 bower_components
 npm-debug.log

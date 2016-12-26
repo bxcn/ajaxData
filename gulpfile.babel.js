@@ -24,7 +24,7 @@ gulp.task("ajaxData", () => {
       namespace: function(file) {
         return 'ajaxData';
       },
-      template: path.join(__dirname, 'umd/templates/ajaxData.js')
+      template: path.join(__dirname, 'umd/umd.js')
     }))
     .pipe(gulp.dest(''))
     .pipe($.replace("'use strict'",''))
@@ -45,7 +45,6 @@ gulp.task('serve', ['ajaxData'], () => {
       baseDir: [''],
       index: 'index.html',
       routes: {
-        '/bower_components': 'bower_components'
       }
     }
   })

@@ -7,11 +7,12 @@
   <body>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="ajaxData.js"></script>
+  <div id="loading" style="width:100px;height:100px;background:red;display:none;"></div>
   <script>
     // 配置成全局
-    ajaxData = ajaxData();
     // Get
     ajaxData.get({
+      loading:"#loading",
       url: "json/add.json",
       data: "name=ajaxData&anthor=bxcn"
     }).done(function(json) {
@@ -37,8 +38,6 @@
     }).fail(function(json) {
       alert("Post fail");
     });
-  </script>
-
   </script>
   </body>
 </html>

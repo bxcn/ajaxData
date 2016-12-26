@@ -9,6 +9,7 @@
 <body>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="http://cdn.bootcss.com/seajs/3.0.2/sea.js"></script>
+  <div id="loadings" style="width:100px;height:100px;background:red;display:none;"></div>
   <script>
   seajs.config({
     base: "",
@@ -16,9 +17,9 @@
 
 
   seajs.use("ajaxData", function(ajaxData) {
-    ajaxData = ajaxData();
     // Get
-    ajaxData.get({
+/*    ajaxData.get({
+        loading:$('#loadings'),
       url: "json/add.json",
       data: "name=ajaxData&anthor=bxcn"
     }).done(function(json) {
@@ -33,7 +34,7 @@
       }
     }).done(function(json) {
       alert(" ajax -> get successfull");
-    });
+    });*/
     // Post
     ajaxData.post({
       type: "get",

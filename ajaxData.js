@@ -52,6 +52,8 @@ var ajaxData = function (window) {
                 loading = $(param.loading);
             } else if (document.getElementById('loading')) {
                 loading = $("#loading");
+            } else {
+                loading = $('<div/>');
             }
             /**
              * typeData 类型:

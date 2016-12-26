@@ -15,6 +15,7 @@ ajaxData异步请求
 ```
 
 #opations对象参数:
+ * loading: 加载loading效果dom元素或id字符串，默认是字符串(#loading)(缺省)
  * url：发送请求的地址 (必填)；
  * data：发送到服务器的数据 (缺省)；
  * beforeSend：请求前调用 (缺省)；
@@ -69,7 +70,7 @@ ajaxData异步请求
       url:"json/add.json",
       data:{name:"bxcn"}
     })
-    .done(function(result){
+   .done(function(result){
       console.log("successfull");
     })
     .fail(function(result){
@@ -79,26 +80,3 @@ ajaxData异步请求
      console.log("always");
     });
 ```
-
-ajaxData是对jauery的ajax方法的一个扩展，不直接以来jquery的ajax.可以扩展ajax请求之前增加一个显示蒙板效果，在加载完成之后来隐藏这个蒙板.
-
-#ajaxData的CMD模式：
-
-通过给ajaxData的方法传一个参数，参数是元素的id,在ajax请求完成前显示加载图片，完成后自动隐藏
-
-``` javascript
-  var ajaxData = require("ajaxData");
-  // 蒙板的id
-  ajaxData = ajaxData("#loading");
-  ajaxData.get({
-    url:"json/add.json",
-    data:"name=ajaxData&anthor=bxcn"
-  }).done(function(json){
-    console.log("successfull");
-  });
-```
-
-
-
-
-

@@ -47,7 +47,13 @@ var ajaxData = function (window) {
                 if (!param.url) {
                     return;
                 }
-
+                if (_typeof(param.loading) == "object") {
+                    loading = param.loading;
+                } else if (typeof param.loading == "string") {
+                    loading = $(param.loading);
+                } else if (document.getElementById('loading')) {
+                    loading = $("#loading");
+                }
                 /**
                  * typeData 类型:
                  * "xml": 返回 XML 文档，可用 jQuery 处理。
@@ -57,11 +63,6 @@ var ajaxData = function (window) {
                  "jsonp": JSONP 格式。使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
                  "text": 返回纯文本字符串
                  */
-                if (_typeof(param.loading) == "object") {
-                    loading = param.loading;
-                } else {
-                    loading = $(param.loading || "#loading");
-                }
 
                 var _cache = param.cache || false;
                 var _type = param.type || "POST";
@@ -106,7 +107,6 @@ var ajaxData = function (window) {
                 return $.ajax(param).always(function () {
                     //当递延对象是解决(success)或拒绝(error)时被调用添加处理程序。
                     loading.hide();
-                    //console.log("always");
                 });
             };
             this.post = function (param) {

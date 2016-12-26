@@ -16,7 +16,7 @@
 }( typeof window !== "undefined" ? window : this, function ( window ) {
 
   <%= contents %>
-
+	window.<%= exports %> = <%= exports %>;
   return <%= exports %>;
 
 } ) );

@@ -128,7 +128,7 @@ var ajaxData = function (window) {
 
     return new AjaxData();
 }(window);
-
+	window.ajaxData = ajaxData;
   return ajaxData;
 
 } ) );

@@ -5,6 +5,21 @@
     <title>ajaxData  支持 Web </title>
   </head>
   <body>
+  <style type="text/css">
+  	.console {
+  		width:50%;
+  		margin:40% auto;
+  		border:1px solid #ff6600;
+  		background-color: #efefef;
+  		color:#ff6600;
+  		padding:20px;
+  		font-size:30px;
+  		text-align:center;
+  	}
+  </style>
+  <div class="console">
+  	请打开console.log面板查看,按F12键！
+  </div>
   <script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
   <script src="ajaxData.js"></script>
   <div id="loading" style="width:100px;height:100px;background:red;display:none;"></div>
@@ -14,30 +29,21 @@
     ajaxData.get({
       loading:"#loading",
       url: "json/add.json",
-      data: "name=ajaxData&anthor=bxcn"
-    }).done(function(json) {
-      alert("Get successfull");
-    });
-    //ajax
-    ajaxData.ajax({
-      type: "get",
-      url: "json/add.json",
-      data: {
-        name: "bxcn"
+      data: "name=ajaxData&anthor=bxcn",
+      beforeSend: function() {
+        console.log('beforeSend方法')
+      },
+      complete: function() {
+      	console.log('complete方法')
+      },
+      success: function() {
+      	console.log('success方法')
       }
     }).done(function(json) {
-      alert(" ajax -> get successfull");
-    });
-    // Post
-    ajaxData.post({
-      type: "get",
-      url: "json/error.json",
-      data: {
-        name: "bxcn"
-      }
-    }).fail(function(json) {
-      alert("Post fail");
-    });
+      console.log("done方法");
+    }).always(function(){
+			console.log('always方法')
+    })
   </script>
   </body>
 </html>

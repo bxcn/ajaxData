@@ -43,8 +43,6 @@ var ajaxData = function (window) {
              "jsonp": JSONP 格式。使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
              "text": 返回纯文本字符串
              */
-
-
             var _cache = param.cache || false;
             var _type = param.type || "POST";
             var _dataType = param.dataType || "json";
@@ -72,11 +70,10 @@ var ajaxData = function (window) {
                     console.log('404: http://' + window.location.host + param.url);
                 }
             };
-            // 设置全局 AJAX 默认选项。
-            $.ajaxSetup({
+
+           var defaults = {
                 type: _type,
                 dataType: _dataType,
-                url: _url,
                 async: _async,
                 data: _data,
                 cache: _cache,
@@ -85,7 +82,9 @@ var ajaxData = function (window) {
                 complete: _complete,
                 success: _success,
                 error: _error
-            });
+            };
+
+            param = $.extend(defaults, param);
 
             return $.ajax(param).always(function () {
                 //当递延对象是解决(success)或拒绝(error)时被调用添加处理程序。

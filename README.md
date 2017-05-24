@@ -3,10 +3,14 @@ ajaxData异步请求
 
 ``` html
 	<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
-	<script src="umd.js"></script>
+	<script src="ajaxData.js"></script>
 ```
 
-它的价值所在：一个简单的ajax请求插件，ajaxData基于jquery插件；在引用ajaxData前请先引用jquery组件，ajaxData可以减少一些不必要每次都写的参数和增加一些在请求前和请求完成后的Loading效果;
+它的价值所在：一个简单的ajax请求插件，ajaxData基于jquery插件；在引用ajaxData前请先引用jquery组件，
+ajaxData可以减少一些不必要每次都写的参数和增加一些在请求前和请求完成后的Loading效果;
+例如：想通过对ajaxData请求前先判断是否登录。这时我们就可以扩展，增加一个isLogin:true,同时在ajaxData中增加对应的代码
+
+
 
 #使用实例：
 
@@ -35,48 +39,48 @@ ajaxData异步请求
 
 调用get方式：
 ``` javascript
-		ajaxData.get({
-			url:"json/add.json",
-			data:"name=ajaxData&anthor=bxcn",
-			success: function( json ){
-				console.log("successfull");
-			}
-		});
+ajaxData.get({
+	url:"json/add.json",
+	data:"name=ajaxData&anthor=bxcn",
+	success: function( json ){
+		console.log("successfull");
+	}
+});
 ```
 调用ajax方式：
 ``` javascript
-		ajaxData.ajax({
-			url:"json/add.json",
-			data:{name:"bxcn"},
-			success: function( json ){
-				console.log("successfull");
-			}
-		});
+ajaxData.ajax({
+	url:"json/add.json",
+	data:{name:"bxcn"},
+	success: function( json ){
+		console.log("successfull");
+	}
+});
 ```
 调用post方式：
 ``` javascript
-		ajaxData.post({
-			url:"json/add.json",
-			data:{name:"bxcn"},
-			success: function( json ){
-				console.log("successfull");
-			}
-		});
+ajaxData.post({
+	url:"json/add.json",
+	data:{name:"bxcn"},
+	success: function( json ){
+		console.log("successfull");
+	}
+});
 ```
 
 请求成功执行done, 失败执行fail, 无论成功还是失败都会执行always的链式调用：
 ``` javascript
-		ajaxData.post({
-			url:"json/add.json",
-			data:{name:"bxcn"}
-		})
-	 .done(function(result){
-			console.log("successfull");
-		})
-		.fail(function(result){
-		 console.log("fail");
-		})
-		.always(function(result){
-		 console.log("always");
-		});
+ajaxData.post({
+	url:"json/add.json",
+	data:{name:"bxcn"}
+})
+.done(function(result){
+	console.log("successfull");
+})
+.fail(function(result){
+ console.log("fail");
+})
+.always(function(result){
+ console.log("always");
+});
 ```

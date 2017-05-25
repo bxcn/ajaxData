@@ -85,9 +85,21 @@ ajaxData.post({
 });
 ```
 
---------
+
+
 #####新增加fetch的支持
 命名为：`fetchData`
 `fetchData`用法包含了jquery`fetchData`的`Ajax`请求和`fetch`语法
 参考fetchData.js和fetchData.html
+
+``` javascript
+fetchData.get({
+  url: "json/add.json",
+  data: "name=ajaxData&anthor=bxcn"
+}).done(function(json) {
+  console.log("done方法");
+}).then(function(json) {
+  console.log("then方法");
+});
+```
 

@@ -27,7 +27,8 @@
     // Get
     fetchData.get({
       url: "json/add.json",
-      data: "name=ajaxData&anthor=bxcn"
+      data: "name=ajaxData&anthor=bxcn",
+      beforeSend: function(){}
     }).done(function(json) {
       console.log("done方法");
     }).then(function(json) {

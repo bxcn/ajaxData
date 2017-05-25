@@ -88,6 +88,7 @@ ajaxData.post({
 
 
 #####新增加fetch的支持
+
 命名为：`fetchData`
 `fetchData`用法包含了jquery`fetchData`的`Ajax`请求和`fetch`语法
 参考fetchData.js和fetchData.html

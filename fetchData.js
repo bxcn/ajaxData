@@ -60,6 +60,7 @@ var PromiseFetchData = function () {
   }, {
     key: "getAjax",
     value: function getAjax(param) {
+      console.log('getAjax');
       var data = param.data || "";
       var url = param.url;
       url = url.indexOf('?') > -1 ? url + '&' + data : url + '?' + data;
@@ -121,10 +122,21 @@ var PromiseFetchData = function () {
 var PromiseDataWrapper = function (_PromiseFetchData) {
   _inherits(PromiseDataWrapper, _PromiseFetchData);
 
-  function PromiseDataWrapper() {
+  function PromiseDataWrapper(param) {
     _classCallCheck(this, PromiseDataWrapper);
 
-    return _possibleConstructorReturn(this, (PromiseDataWrapper.__proto__ || Object.getPrototypeOf(PromiseDataWrapper)).call(this));
+    var _this = _possibleConstructorReturn(this, (PromiseDataWrapper.__proto__ || Object.getPrototypeOf(PromiseDataWrapper)).call(this));
+
+    _this.defaults = {
+      beforeSend: function beforeSend() {},
+      complete: function complete() {},
+      success: function success() {},
+      error: function error() {}
+    };
+
+    _this.defaults = Object.assign(_this.defaults, param);
+
+    return _this;
   }
   /**
    *
@@ -141,6 +153,30 @@ var PromiseDataWrapper = function (_PromiseFetchData) {
       } else {
         return Promise.reject(new Error(response.statusText));
       }
+    }
+  }, {
+    key: "beforeSend",
+    value: function beforeSend() {
+      this.defaults.beforeSend();
+      console.log('beforeSend');
+    }
+  }, {
+    key: "complete",
+    value: function complete() {
+      this.defaults.complete();
+      console.log('complete');
+    }
+  }, {
+    key: "success",
+    value: function success() {
+      this.defaults.success();
+      console.log('success');
+    }
+  }, {
+    key: "error",
+    value: function error() {
+      this.defaults.error();
+      console.log('error');
     }
 
     /**
@@ -165,7 +201,12 @@ var PromiseDataWrapper = function (_PromiseFetchData) {
     key: "wrapper",
     value: function wrapper(promise) {
       var that = this;
-      return promise.then(that.status).then(that.json);
+      var fetch = promise.then(that.status).then(that.json).catch(function (err) {
+        that.error();
+      });
+
+      this.success();
+      return fetch;
     }
 
     // @Override
@@ -173,7 +214,9 @@ var PromiseDataWrapper = function (_PromiseFetchData) {
   }, {
     key: "post",
     value: function post(param) {
+      this.beforeSend();
       this.fetchData = this.wrapper(this.postAjax(param));
+      this.complete();
       return this;
     }
 
@@ -182,7 +225,9 @@ var PromiseDataWrapper = function (_PromiseFetchData) {
   }, {
     key: "get",
     value: function get(param) {
+      this.beforeSend();
       this.fetchData = this.wrapper(this.getAjax(param));
+      this.complete();
       return this;
     }
   }]);
@@ -194,10 +239,10 @@ var PromiseDataWrapper = function (_PromiseFetchData) {
 
 var fetchData = {
   get: function get(param) {
-    return new PromiseDataWrapper().get(param);
+    return new PromiseDataWrapper(param).get(param);
   },
   post: function post(param) {
-    return new PromiseDataWrapper().post(param);
+    return new PromiseDataWrapper(param).post(param);
   }
 };
 	window.fetchData = fetchData;

@@ -5,17 +5,16 @@ import path from 'path';
 const $ = gulpLoadPlugins();
 
 gulp.task("ajaxData", () => {
-  gulp.src(['src/**/*.js'])
+  gulp.src(['src/ajaxData.js'])
     .pipe($.babel({
       "presets": ["es2015"]
     }))
-    .pipe($.replace("'use strict'",''))
-    .pipe($.concat('ajaxData.js'))
-    .pipe($.umd({
+    .pipe($.replace("'use strict'", ''))
+  	.pipe($.umd({
       dependencies: function(file) {
         return [{
-          name:"",
-          amd:""
+          name: "",
+          amd: ""
         }];
       },
       exports: function(file) {
@@ -27,16 +26,49 @@ gulp.task("ajaxData", () => {
       template: path.join(__dirname, 'umd/umd.js')
     }))
     .pipe(gulp.dest(''))
-    .pipe($.replace("'use strict'",''))
+    .pipe($.replace("'use strict'", ''))
     .pipe($.uglify())
-    .pipe($.concat('ajaxData.min.js'))
+    .pipe($.rename(function(path) {
+      path.extname = ".min.js"
+    }))
+    .pipe(gulp.dest(''));
+});
+
+
+gulp.task("fetchData", () => {
+  gulp.src(['src/fetchData.js'])
+    .pipe($.babel({
+      "presets": ["es2015"]
+    }))
+    .pipe($.replace("'use strict'", ''))
+  	.pipe($.umd({
+      dependencies: function(file) {
+        return [{
+          name: "",
+          amd: ""
+        }];
+      },
+      exports: function(file) {
+        return 'fetchData';
+      },
+      namespace: function(file) {
+        return 'fetchData';
+      },
+      template: path.join(__dirname, 'umd/umd.js')
+    }))
+    .pipe(gulp.dest(''))
+    .pipe($.replace("'use strict'", ''))
+    .pipe($.uglify())
+    .pipe($.rename(function(path) {
+      path.extname = ".min.js"
+    }))
     .pipe(gulp.dest(''));
 });
 
 // 重新加载
 const reload = browserSync.reload;
 
-gulp.task('serve', ['ajaxData'], () => {
+gulp.task('serve', ['ajaxData','fetchData'], () => {
   browserSync({
     port: 900, //端口
     host: 'localhost',
@@ -44,13 +76,13 @@ gulp.task('serve', ['ajaxData'], () => {
     server: {
       baseDir: [''],
       index: 'index.html',
-      routes: {
-      }
+      routes: {}
     }
   })
 
   // 每当修改以下文件夹下的文件时就会刷新浏览器;
-  gulp.watch('src/**/*.js', ['ajaxData']);
+  gulp.watch('src/ajaxData.js', ['ajaxData']);
+  gulp.watch('src/fetchData.js', ['fetchData']);
 
   gulp.watch([
     'app/**/*.*'

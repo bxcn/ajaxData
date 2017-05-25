@@ -34,7 +34,7 @@ ajaxData可以减少一些不必要每次都写的参数和增加一些在请求
 
 全局配置：
 ``` javascript
-	ajaxData = ajaxData();
+ajaxData = ajaxData();
 ```
 
 调用get方式：
@@ -60,8 +60,8 @@ ajaxData.ajax({
 调用post方式：
 ``` javascript
 ajaxData.post({
-	url:"json/add.json",
-	data:{name:"bxcn"},
+ url:"json/add.json",
+ data:{name:"bxcn"},
 	success: function( json ){
 		console.log("successfull");
 	}
@@ -71,11 +71,11 @@ ajaxData.post({
 请求成功执行done, 失败执行fail, 无论成功还是失败都会执行always的链式调用：
 ``` javascript
 ajaxData.post({
-	url:"json/add.json",
-	data:{name:"bxcn"}
+ url:"json/add.json",
+ data:{name:"bxcn"}
 })
 .done(function(result){
-	console.log("successfull");
+ console.log("successfull");
 })
 .fail(function(result){
  console.log("fail");
@@ -84,3 +84,7 @@ ajaxData.post({
  console.log("always");
 });
 ```
+
+
+###新增加fetch的支持命名为：fetchData
+fetchData用法包含了jquery的Ajax请求和fetch语法

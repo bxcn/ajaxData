@@ -51,8 +51,7 @@ class PromiseFetchData {
   }
 
   done(callback) {
-    this.fetchData.then(callback);
-    return this;
+    return this.then(callback);
   }
 
   then(callback) {

@@ -88,8 +88,7 @@ var PromiseFetchData = function () {
   }, {
     key: "done",
     value: function done(callback) {
-      this.fetchData.then(callback);
-      return this;
+      return this.then(callback);
     }
   }, {
     key: "then",
